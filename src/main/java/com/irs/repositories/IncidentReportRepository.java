@@ -1,13 +1,8 @@
-package repositories;
+package com.irs.repositories;
 
-import Constants.IncidentType;
-import Constants.ReportStatus;
-import entities.ReportEntity;
+import com.irs.entities.ReportEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import springfox.documentation.spring.web.json.Json;
 
 @Repository
 public interface IncidentReportRepository extends JpaRepository<ReportEntity, Long> {

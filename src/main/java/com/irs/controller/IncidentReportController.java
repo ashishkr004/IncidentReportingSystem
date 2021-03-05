@@ -1,13 +1,17 @@
-package controller;
+package com.irs.controller;
 
-import entities.ReportDto;
-import entities.ResponseDto;
+import com.irs.entities.ReportDto;
+import com.irs.entities.ResponseDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import services.IncidentReportService;
+import com.irs.services.IncidentReportService;
 
+import java.io.IOException;
+
+@Slf4j
 @Controller
 @RequestMapping("/irs/v1.0/report")
 public class IncidentReportController {
@@ -16,7 +20,8 @@ public class IncidentReportController {
     private IncidentReportService incidentReportService;
 
     @PostMapping
-    public ResponseEntity<ResponseDto> createReport(@RequestBody ReportDto reportDto) {
+    public ResponseEntity<ResponseDto> createReport(@RequestBody ReportDto reportDto) throws IOException {
+        log.info("request_body: ", reportDto);
         ReportDto reportDto1 = incidentReportService.createReport(reportDto);
         ResponseDto responseDto = new ResponseDto();
         return ResponseEntity.ok(responseDto);

@@ -1,4 +1,4 @@
-package entities;
+package com.irs.entities;
 
 
 import lombok.AllArgsConstructor;

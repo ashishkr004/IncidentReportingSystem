@@ -1,11 +1,13 @@
-package servicesimpl;
+package com.irs.servicesimpl;
 
-import entities.ReportDto;
-import entities.ReportEntity;
+import com.irs.entities.ReportDto;
+import com.irs.entities.ReportEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.IncidentReportRepository;
-import services.IncidentReportService;
+import com.irs.repositories.IncidentReportRepository;
+import com.irs.services.IncidentReportService;
+
+import java.io.IOException;
 
 @Service
 public class IncidentReportServiceImpl implements IncidentReportService {
@@ -14,7 +16,7 @@ public class IncidentReportServiceImpl implements IncidentReportService {
     private IncidentReportRepository incidentReportRepository;
 
     @Override
-    public ReportDto createReport(ReportDto reportDto) {
+    public ReportDto createReport(ReportDto reportDto) throws IOException {
 
         ReportEntity reportEntity = incidentReportRepository.save(reportDto.convertToEntity());
 

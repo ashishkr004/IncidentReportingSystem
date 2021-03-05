@@ -1,3 +1,5 @@
+package com.irs;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +9,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.project"})
-@ComponentScan(basePackages = {"com.project"})
-@EntityScan({"com.project"})
-@EnableJpaRepositories({"com.project"})
+@SpringBootApplication(scanBasePackages = {"com.irs"})
+@ComponentScan(basePackages = {"com.irs"})
+@EntityScan({"com.irs.entities"})
+@EnableJpaRepositories({"com.irs"})
 @EnableCaching
 
 public class IncidentReportingSystem {
