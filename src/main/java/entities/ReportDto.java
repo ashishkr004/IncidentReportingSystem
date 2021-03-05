@@ -20,5 +20,10 @@ public class ReportDto {
         return this.id;
     }
 
+    public ReportEntity convertToEntity(){
+        ReportEntity reportEntity = new ReportEntity();
+        return reportEntity;
+    }
+
 
 }

@@ -30,8 +30,9 @@ public class ReportEntity {
     @Column(name = "report_status", nullable = false)
     private ReportStatus reportStatus;
 
-    public ReportEntity dtoToEntity(ReportDto reportDto) {
+    public ReportDto convertToDto() {
+        ReportDto reportDto = new ReportDto();
         this.id = reportDto.getId();
-        return this;
+        return reportDto;
     }
 }
