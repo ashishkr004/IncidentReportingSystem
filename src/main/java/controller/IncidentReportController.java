@@ -19,6 +19,7 @@ public class IncidentReportController {
 
     @PostMapping
     public ResponseEntity<ResponseDto> createReport(@RequestBody ReportDto reportDto) {
+        ReportDto reportDto1 = incidentReportService.createReport(reportDto);
         ResponseDto responseDto = new ResponseDto();
         return ResponseEntity.ok(responseDto);
     }
