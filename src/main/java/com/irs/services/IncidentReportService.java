@@ -7,5 +7,5 @@ import java.io.IOException;
 public interface IncidentReportService {
     ReportDto createReport(ReportDto reportDto) throws IOException;
     ReportDto updateReportById(ReportDto reportDto);
-    ReportDto getReportById(ReportDto reportDto);
+    ReportDto getReportById(Long reportId);
 }

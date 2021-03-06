@@ -21,23 +21,35 @@ public class IncidentReportController {
 
     @PostMapping
     public ResponseEntity<ResponseDto> createReport(@RequestBody ReportDto reportDto) throws IOException {
-        log.info("request_body: ", reportDto);
+        log.info("request_body: {}", reportDto.toString());
+
         ReportDto reportDto1 = incidentReportService.createReport(reportDto);
-        ResponseDto responseDto = new ResponseDto();
+        ResponseDto responseDto = ResponseDto.builder()
+                .data(reportDto1)
+                .status("200")
+                .message("report added successfully")
+                .build();
         return ResponseEntity.ok(responseDto);
     }
 
     @PatchMapping
     public ResponseEntity<ResponseDto> updateReportById(@RequestBody ReportDto reportDto) {
+        log.info("request_body: {}", reportDto.toString());
+
         ReportDto reportDto1 = incidentReportService.updateReportById(reportDto);
         ResponseDto responseDto = new ResponseDto();
         return ResponseEntity.ok(responseDto);
     }
 
     @GetMapping
-    public ResponseEntity<ResponseDto> getReportById(@RequestBody ReportDto reportDto) {
-        ReportDto reportDto1 = incidentReportService.getReportById(reportDto);
-        ResponseDto responseDto = new ResponseDto();
+    public ResponseEntity<ResponseDto> getReportById(@RequestParam (name = "id") Long reportId) {
+        log.info("request id: {}", reportId);
+        ReportDto reportDto1 = incidentReportService.getReportById(reportId);
+        ResponseDto responseDto = ResponseDto.builder()
+                .data(reportDto1)
+                .status("200")
+                .message("report fetched successfully")
+                .build();
         return ResponseEntity.ok(responseDto);
     }
 }

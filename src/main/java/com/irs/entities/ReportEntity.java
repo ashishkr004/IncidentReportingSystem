@@ -32,14 +32,20 @@ public class ReportEntity {
 
     @Type(type = "jsonb")
     @Column(name = "incident_details", nullable = false, columnDefinition = "jsonb")
-    private Map<String,Map<String,String>> incidentDetails;
+    private JsonNode incidentDetails;
+
+    //explain why
 
     @Column(name = "report_status", nullable = false)
     private ReportStatus reportStatus;
 
     public ReportDto convertToDto() {
-        ReportDto reportDto = new ReportDto();
-        this.id = reportDto.getId();
+        ReportDto reportDto = ReportDto.builder()
+                .id(this.id)
+                .incidentDetails(this.incidentDetails)
+                .incidentType(this.incidentType.toString())
+                .reportStatus(this.reportStatus.toString())
+                .build();
         return reportDto;
     }
 }

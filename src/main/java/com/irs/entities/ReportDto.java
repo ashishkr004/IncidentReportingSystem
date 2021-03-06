@@ -18,7 +18,7 @@ public class ReportDto {
 
     private Long id;
     private String incidentType;
-    private String incidentDetails;
+    private JsonNode incidentDetails;
     private String reportStatus;
 
     public Long getId(){
@@ -28,13 +28,13 @@ public class ReportDto {
     public ReportEntity convertToEntity() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        Property property = objectMapper.readValue(incidentDetails, Property.class);
+//        Property property = objectMapper.readValue(incidentDetails, Property.class);
 
-        JsonNode jsonNode = objectMapper.readTree(this.incidentDetails);
+//        JsonNode jsonNode = objectMapper.readTree(this.incidentDetails);
 
         ReportEntity reportEntity = ReportEntity.builder()
                 .id(this.id)
-//                .incidentDetails(this.incidentDetails)
+                .incidentDetails(this.incidentDetails)
                 .reportStatus(ReportStatus.valueOf(this.reportStatus))
                 .incidentType(IncidentType.valueOf(this.incidentType))
                 .build();

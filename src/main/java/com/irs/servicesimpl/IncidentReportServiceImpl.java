@@ -29,7 +29,8 @@ public class IncidentReportServiceImpl implements IncidentReportService {
     }
 
     @Override
-    public ReportDto getReportById(ReportDto reportDto){
-        return reportDto;
+    public ReportDto getReportById(Long reportId){
+        ReportEntity reportEntity = incidentReportRepository.getOne(reportId);
+        return reportEntity.convertToDto();
     }
 }
