@@ -1,4 +1,4 @@
-package com.irs.Constants;
+package com.irs.constants;
 
 public class ReportConstants {
     public static final String EMPLOYEE_INJURY = "employee_injury";

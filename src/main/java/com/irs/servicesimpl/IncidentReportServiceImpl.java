@@ -1,5 +1,7 @@
 package com.irs.servicesimpl;
 
+import com.irs.constants.IncidentType;
+import com.irs.constants.ReportStatus;
 import com.irs.entities.ReportDto;
 import com.irs.entities.ReportEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,14 @@ public class IncidentReportServiceImpl implements IncidentReportService {
     }
 
     @Override
-    public ReportDto updateReportById(ReportDto reportDto){
-        return reportDto;
+    public ReportDto updateReportById(ReportDto reportDto) throws IOException {
+        ReportEntity reportEntity = incidentReportRepository.getOne(reportDto.getId());
+
+        updateReport(reportEntity, reportDto);
+
+        ReportEntity reportEntity1 = incidentReportRepository.save(reportEntity);
+
+        return reportEntity1.convertToDto();
     }
 
     @Override
@@ -33,4 +41,11 @@ public class IncidentReportServiceImpl implements IncidentReportService {
         ReportEntity reportEntity = incidentReportRepository.getOne(reportId);
         return reportEntity.convertToDto();
     }
+
+    private void updateReport(ReportEntity reportEntity, ReportDto reportDto) {
+        reportEntity.setIncidentDetails(reportDto.getIncidentDetails());
+        reportEntity.setReportStatus(ReportStatus.valueOf(reportDto.getReportStatus()));
+        reportEntity.setIncidentType(IncidentType.valueOf(reportDto.getIncidentType()));
+    }
+
 }

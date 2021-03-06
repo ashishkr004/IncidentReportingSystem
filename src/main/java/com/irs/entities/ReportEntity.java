@@ -1,17 +1,14 @@
 package com.irs.entities;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.irs.Constants.IncidentType;
-import com.irs.Constants.ReportStatus;
+import com.irs.constants.IncidentType;
+import com.irs.constants.ReportStatus;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.persistence.*;
-import java.util.Map;
 
 @Data
 @Builder
@@ -33,8 +30,6 @@ public class ReportEntity {
     @Type(type = "jsonb")
     @Column(name = "incident_details", nullable = false, columnDefinition = "jsonb")
     private JsonNode incidentDetails;
-
-    //explain why
 
     @Column(name = "report_status", nullable = false)
     private ReportStatus reportStatus;

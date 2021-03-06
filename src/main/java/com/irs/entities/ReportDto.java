@@ -3,10 +3,9 @@ package com.irs.entities;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.irs.Constants.IncidentType;
-import com.irs.Constants.ReportStatus;
+import com.irs.constants.IncidentType;
+import com.irs.constants.ReportStatus;
 import lombok.*;
-import springfox.documentation.spring.web.json.Json;
 
 import java.io.IOException;
 
@@ -27,10 +26,6 @@ public class ReportDto {
 
     public ReportEntity convertToEntity() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
-//        Property property = objectMapper.readValue(incidentDetails, Property.class);
-
-//        JsonNode jsonNode = objectMapper.readTree(this.incidentDetails);
 
         ReportEntity reportEntity = ReportEntity.builder()
                 .id(this.id)

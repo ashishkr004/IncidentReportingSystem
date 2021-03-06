@@ -1,4 +1,4 @@
-package com.irs.Constants;
+package com.irs.constants;
 
 public enum  IncidentType {
     EMPLOYEE_INJURY,
