@@ -3,7 +3,6 @@ import com.irs.constants.ReportStatus;
 import com.irs.entities.ReportDto;
 import com.irs.entities.ReportEntity;
 import com.irs.repositories.IncidentReportRepository;
-import com.irs.services.IncidentReportService;
 import com.irs.servicesimpl.IncidentReportServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
